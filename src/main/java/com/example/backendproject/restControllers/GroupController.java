@@ -18,11 +18,17 @@ public class GroupController {
 
     @Autowired
     GroupRepops groupRepops;
-    @Autowired
+
+
+        @Autowired
     UserRepository userRepository  ;
-    @Autowired
+
+
+        @Autowired
     ChapterRepo chapterRepo ;
-    @PostMapping()
+
+
+    @PostMapping("/")
     public Group addGroup (@RequestBody Group group){
     Group grp = groupRepops.save(group);
         if (!group.getChaptersList().isEmpty()){
@@ -53,11 +59,19 @@ public class GroupController {
     }
     @GetMapping("/{userID}")
     public Group getGroupsByUser (@PathVariable Long userID){
+
         User user  = userRepository.findById(userID).orElse(null);
+
         return  groupRepops.findGroupByUsers(user);
+
     }
-    @GetMapping()
+
+
+    @GetMapping("/")
     public List<Group> getAllGroups (){
-        return  groupRepops.findAll() ;
+        return  groupRepops
+                .findAll() ;
     }
+
+
 }

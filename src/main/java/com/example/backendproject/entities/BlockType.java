@@ -16,6 +16,5 @@ public enum BlockType {
     ARROW_LEFT ,
     BREAK ,
     ARROW_RIGHT ,
-    QUESTION ,
-    COLORATE_TEXT
+    QUESTION
 }

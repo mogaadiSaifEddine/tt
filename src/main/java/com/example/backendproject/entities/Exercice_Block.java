@@ -24,9 +24,13 @@ public class Exercice_Block {
     private String placeholder;
     private String value;
     private String correctValue ;
+
     private Boolean isAdmissable;
     private int blockOrder;
+
+
     private BlockType exerciceBlockType;
+
     @ManyToOne
     @JoinColumn(name="exercice")
 //    @Cascade(org.hibernate.annotations.CascadeType.ALL)

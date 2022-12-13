@@ -3,6 +3,7 @@ package com.example.backendproject.restControllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 import com.example.backendproject.entities.*;
@@ -19,6 +20,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,6 +48,11 @@ public class UserRESTController {
 	GroupRepops groupRepops;
 	@Autowired
 	CouponService couponService;
+
+
+
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
 	@RequestMapping(path="all",method=RequestMethod.GET)
 	public List<User> getAllUsers() {
 		return userService.findAllUsers();
@@ -104,11 +111,19 @@ public class UserRESTController {
 		assert user1!=null;
 		user1.setFirstname(user.getFirstname());
 		user1.setDatenaissance(user.getDatenaissance());
-		user1.setPassword(user.getPassword());
+
 		user1.setLastname(user.getLastname());
-		user1.setConfirmepassword(user.getPassword());
 		user1.setEmail(user.getEmail());
 		user1.setGroup((user.getGroup()));
+
+System.out.println(user.getPassword());
+
+		if (user.getPassword() != null) {
+//
+			user1.setConfirmepassword(bCryptPasswordEncoder.encode(user.getPassword()));
+
+			user1.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+		}
 		return  userRepository.save(user1);
 	}
 
