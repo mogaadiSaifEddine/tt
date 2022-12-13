@@ -61,18 +61,6 @@ public class Chapter {
     @JsonIgnore
     @ToString.Exclude
     private List<ExerciceSerie> exerciceSeries;
-    @OneToMany(mappedBy = "chapter" )
-    @JsonIgnoreProperties("chapter")
-    @ToString.Exclude
-    private  List<Catre_Conceptuelle> catre_conceptuelles;
-    @OneToMany(mappedBy = "chapter" )
-    @JsonIgnoreProperties("chapter")
-    @ToString.Exclude
-     private  List<Resumer_Cour> resumer_courList;
-    @OneToMany(mappedBy = "chapter" )
-    @JsonIgnoreProperties("chapter")
-    @ToString.Exclude
-    private  List<Pre_Required_Chapter> pre_required_chapterList;
 
 
 

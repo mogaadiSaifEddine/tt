@@ -2,6 +2,7 @@ package com.example.backendproject.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,14 +16,18 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Table(name = "group_eleve")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
     private String name  ;
     private  String description ;
+
+
     @OneToMany(mappedBy = "group")
     @JsonIgnore
     private List<Student> users;
@@ -36,11 +41,5 @@ public class Group {
 
     List<Teacher> teacherList ;
 
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "(" +
-                "id = " + id + ", " +
-                "name = " + name + ", " +
-                "description = " + description + ")";
-    }
+
 }

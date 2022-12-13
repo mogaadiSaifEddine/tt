@@ -27,6 +27,7 @@ public class ExerciceSerie {
     @OneToMany(mappedBy = "exerciceSerie"  , cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties({"exerciceSerie", "user_answers","exercice_blockList"})
     @ToString.Exclude
+//
     private List<Exrcise> exercices;
 
   private   SeriesType seriesType;

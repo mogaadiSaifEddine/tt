@@ -26,7 +26,7 @@ public class PreRequiredContoller {
     public void DeleteChapter(@PathVariable("id") Long id) {
         chapterService.Deleteperequired(id);
     }
-    @GetMapping()
+    @GetMapping("/")
     public List<Pre_Required_Chapter> GetAllChapter() {
         return chapterService.GetAllPrerequired();
     }

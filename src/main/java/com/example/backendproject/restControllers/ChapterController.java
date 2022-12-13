@@ -59,11 +59,9 @@ public class ChapterController {
     public Chapter UpdateChapter(@RequestBody Chapter chapter ,  @PathVariable Long  grpId,@PathVariable Long  chapid ) {
         Chapter chapter1 = chapterRepo.findById(chapid).orElse(null) ;
         assert chapter1 != null;
-        System.out.println(grpId);
-        System.out.println(chapid);
+
         Group grp = groupRepops.findById(grpId).orElse(null)  ;
-        System.out.println(grp.toString());
-        chapter1.setGroup(grp);
+        chapter.setGroup(grp);
         chapter1.setName(chapter.getName());
         chapter1.setUrl(chapter.getUrl());
 
@@ -73,7 +71,7 @@ public class ChapterController {
     public void DeleteChapter(@PathVariable("id") Long id) {
         chapterService.DeleteChapter(id);
     }
-    @GetMapping()
+    @GetMapping("/")
     public List<Chapter> GetAllChapter() {
         return chapterService.GetAllChapter();
     }

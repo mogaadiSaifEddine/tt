@@ -78,7 +78,6 @@ public class CourseService {
             Course cp = fr.save(f);
             chapter.setCourse(cp);
             er.save(chapter);
-            System.out.println(chapter.toString());
             return cp;
         }catch (Exception e){
             System.out.println("Error Uploading file"+e.getMessage());

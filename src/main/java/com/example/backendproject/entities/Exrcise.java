@@ -48,6 +48,8 @@ public class Exrcise {
     @OneToMany(mappedBy="exercice",orphanRemoval=true)
     @JsonIgnore
     private List<User_answer> user_answers;
+
+
     @ManyToOne
     @JoinColumn(name = "exerciceSerie")
     @JsonIgnore

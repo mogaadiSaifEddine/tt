@@ -32,13 +32,10 @@ public class ExerciceSerieController {
     @Autowired
     ExerciceBlockService exercice_blockService;
 
-    @PostMapping("/{idchap}")
-    public ExerciceSerie AddSerie(@RequestBody ExerciceSerie serie,@PathVariable("idchap") Long chapid){
+    @PostMapping("/")
+    public ExerciceSerie AddSerie(@RequestBody ExerciceSerie serie){
         System.out
                 .println(serie);
-      Chapter chap =  chapterRepo.findById(chapid).orElse(null)  ;
-      System.out.println(chap);
-      serie.setChapter(chap);
         ExerciceSerie ex = exerciceSerieService.AddSerie(serie);
 
         if (!ex.getExercices().isEmpty()) {
@@ -67,7 +64,7 @@ public class ExerciceSerieController {
         exerciceSerieService.DeleteSerie(id);
         return true;
     }
-    @GetMapping()
+    @GetMapping("/")
     public List<ExerciceSerie> getAllSerie(){
         return exerciceSerieService.GetAllSerie();
     }
