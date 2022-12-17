@@ -72,6 +72,12 @@ public class UserRESTController {
 		user.setProfession("parent");
 		return userService.register(user);
 	}
+	@PostMapping("/advisor")
+	public User addAdvisor(@RequestBody EducationalAdvisor user) {
+
+		user.setProfession("advisor");
+		return userService.register(user);
+	}
 	@PostMapping("/teacher")
 	public User addTeacher(@RequestBody Teacher user) {
 

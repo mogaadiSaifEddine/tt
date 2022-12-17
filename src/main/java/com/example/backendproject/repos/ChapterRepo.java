@@ -15,7 +15,9 @@ public interface ChapterRepo extends JpaRepository<Chapter,Long> {
 
     List <Chapter> findByGroup (Group group);
     List <Chapter> findByTeacher (User user);
-    List <Chapter> findByParent (Chapter  chapter);
+    List <Chapter> findByParentAndIsValid (Chapter  chapter , Boolean isValid);
+
+    List <Chapter> findByIsValid(Boolean isValid) ;
 
     Chapter findChapterByChildren(Chapter children);
 }

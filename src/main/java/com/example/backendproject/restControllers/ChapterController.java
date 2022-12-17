@@ -51,6 +51,7 @@ public class ChapterController {
         assert parent != null;
         parent.getChildren().add(ch);
         chapter.setParent(parent);
+        chapter.setIsValid(false);
         chapterRepo.save(parent) ;
 
         return ch;
@@ -64,7 +65,7 @@ public class ChapterController {
         chapter.setGroup(grp);
         chapter1.setName(chapter.getName());
         chapter1.setUrl(chapter.getUrl());
-
+    chapter1.setIsValid(chapter.getIsValid());
         return chapterRepo.save(chapter1 );
     }
     @DeleteMapping("/{id}")
@@ -126,8 +127,12 @@ public class ChapterController {
 
         Chapter parent  = chapterRepo.findById(matId).orElse(null);
 
-        return chapterRepo.findByParent(parent);    }
+        return chapterRepo.findByParentAndIsValid(parent , true);    }
+@GetMapping("/advisor")
+    public List<Chapter> getChaptersToAdvisor(){
+        return  chapterRepo.findByIsValid(false) ;
 
+}
 
 
 
