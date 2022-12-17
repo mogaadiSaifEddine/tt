@@ -22,6 +22,12 @@ public class Chapter {
 
     private Trimestre trimestre;
 
+
+
+
+    @Column(columnDefinition = "boolean default true")
+     private  Boolean isValid ;
+
     @JsonIgnore
     @ManyToOne
     private User teacher ;
