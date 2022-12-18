@@ -1,6 +1,7 @@
 package com.example.backendproject.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -23,12 +24,14 @@ public class Student extends  User{
 
     @OneToMany(mappedBy="student")
     @ToString.Exclude
+    @JsonIgnore
     private List<User_answer> user_answers;
 
 
     @ManyToMany()
     @JsonIgnoreProperties({"studentList , parent"})
     @ToString.Exclude
+//    @ToString.Exclude
     List<Coupon> coupon ;
 
     @ManyToOne
