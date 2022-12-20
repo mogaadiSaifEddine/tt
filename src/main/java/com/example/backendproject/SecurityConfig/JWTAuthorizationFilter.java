@@ -24,6 +24,8 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, 
 			                        FilterChain filterChain)
 			throws ServletException, IOException {
+		System.out
+						.println(request.getMethod());
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Allow-Methods",	"GET,HEAD,OPTIONS,POST,PUT,DELETE");
 		response.addHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers,Origin,Accept, "
@@ -33,6 +35,7 @@ public class JWTAuthorizationFilter extends OncePerRequestFilter {
 		response.addHeader("Access-Control-Expose-Headers","userconnected");
 		if (request.getMethod().equals("OPTIONS"))
 		{
+	System.out.println("am in option condition");
 			response.setStatus(HttpServletResponse.SC_OK);
 			return;
 		}
