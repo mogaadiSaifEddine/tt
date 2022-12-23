@@ -13,11 +13,13 @@ public interface FileStorageService {
     public void addCardConceptuelFile(MultipartFile file , String url);
     public void addExerciceFile(MultipartFile file , String url);
     public void addCourse(MultipartFile file , String url);
+    public void addCoursePR(MultipartFile file , String url);
 
 
     public Resource loadArticle(String filename);
     public Resource loadCart(String filename);
     public Resource loadCourse(String filename);
+    public Resource loadCoursePR(String filename);
     public Resource load(String filename);
     public Resource loadExerciceFile(String filename);
 
