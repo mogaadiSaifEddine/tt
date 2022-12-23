@@ -30,6 +30,8 @@ public class ExcersieController {
     @PostMapping("/{idSerie}")
     public Exrcise save(  @RequestBody Exrcise e , @PathVariable Long idSerie ) {
         ExerciceSerie exerciceSerie = exerciceSerieRepo.findById(idSerie).orElse(null) ;
+        assert exerciceSerie != null;
+        exerciceSerie.getChapter().setIsValid(false);
         e.setExerciceSerie(exerciceSerie);
      Exrcise ex =   exerciceService.AddExercice(e);
         System.out.println("user DEtails");

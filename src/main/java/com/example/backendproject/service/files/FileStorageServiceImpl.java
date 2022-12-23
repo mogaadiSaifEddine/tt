@@ -34,6 +34,8 @@ public class FileStorageServiceImpl  implements FileStorageService    {
     private String articleClubFolder;
     @Value("${ExerciceFolder}")
     private String ExerciceFolder;
+    @Value("${CoursePR}")
+    private String CoursePRFolder;
 
     public FileStorageServiceImpl() {
     }
@@ -63,6 +65,16 @@ public class FileStorageServiceImpl  implements FileStorageService    {
         try {
             System.out.println(Paths.get(ExerciceFolder).resolve(url));
             Files.copy(file.getInputStream(),Paths.get(ExerciceFolder).resolve(url));
+        } catch (Exception e) {
+            throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
+        }
+
+
+    } @Override
+    public void addCoursePR(MultipartFile file , String url) {
+        try {
+            System.out.println(Paths.get(CoursePRFolder).resolve(url));
+            Files.copy(file.getInputStream(),Paths.get(CoursePRFolder).resolve(url));
         } catch (Exception e) {
             throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
         }
@@ -153,6 +165,21 @@ public class FileStorageServiceImpl  implements FileStorageService    {
             throw new RuntimeException("Error: " + e.getMessage());
         }
     }
+    @Override
+    public Resource loadCoursePR(String filename) {
+        try {
+            Path file = Paths.get(CoursePRFolder).resolve(filename);
+            Resource resource = new UrlResource(file.toUri());
+            if(resource.exists() || resource.isReadable()) {
+                return resource;
+            }else {
+                throw new RuntimeException("Could not read the file!");
+            }
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Error: " + e.getMessage());
+        }
+    }
+
 
     @Override
     public Resource loadCourse(String filename) {

@@ -43,6 +43,11 @@ public class Chapter {
     private    Course course;
 
 
+    @OneToOne()
+    @JoinColumn(name = "coursePR")
+    private    CoursePR coursePR;
+
+
 
 
 
