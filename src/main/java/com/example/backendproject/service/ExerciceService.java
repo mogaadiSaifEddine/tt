@@ -44,7 +44,7 @@ public class ExerciceService {
             checkChapterValid(chapter);
         }
         chapterRepo.save(chapter);
-
+        updatedExercise.setAdvisorComment(updatedExercise.getAdvisorComment());
         existingExercise.setName(updatedExercise.getName());
         existingExercise.setValid(updatedExercise.isValid());
         existingExercise.setRTL(updatedExercise.isRTL());

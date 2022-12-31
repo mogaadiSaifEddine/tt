@@ -5,7 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Stream;
 
 import com.example.backendproject.entities.ExerciceFile;
@@ -25,7 +27,8 @@ public class FileStorageServiceImpl  implements FileStorageService    {
     private String conceptuelCardFolder;
     @Value("${CoureseFolder}")
     private String coureseFolder;
-
+    @Value("${BlockFilesFolder}")
+    private String BlockFilesFolder;
 
     @Value("${clubFolder}")
     private String clubFolder;
@@ -100,7 +103,15 @@ public class FileStorageServiceImpl  implements FileStorageService    {
             throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
         }
     }
+    @Override
+    public void  addBlockFiles(MultipartFile file , String url) {
+        try {
 
+                Files.copy(file.getInputStream(), Paths.get(BlockFilesFolder).resolve(url));
+        } catch (Exception e) {
+            throw new RuntimeException("Could not store the file. Error: " + e.getMessage());
+        }
+    }
     @Override
     public void saveClubArticle(MultipartFile file , String url) {
         try {
@@ -150,7 +161,19 @@ public class FileStorageServiceImpl  implements FileStorageService    {
             throw new RuntimeException("Error: " + e.getMessage());
         }
     }
-
+    public Resource loadBlockFile(String filename) {
+        try {
+            Path file = Paths.get(ExerciceFolder).resolve(filename);
+            Resource resource = new UrlResource(file.toUri());
+            if(resource.exists() || resource.isReadable()) {
+                return resource;
+            }else {
+                throw new RuntimeException("Could not read the file!");
+            }
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Error: " + e.getMessage());
+        }
+    }
     @Override
     public Resource loadCart(String filename) {
         try {
@@ -165,6 +188,27 @@ public class FileStorageServiceImpl  implements FileStorageService    {
             throw new RuntimeException("Error: " + e.getMessage());
         }
     }
+    @Override
+    public List<Resource> loadFileClub(List<String> filenamesList) {
+        List<Resource> fileslist = new ArrayList<>() ;
+        try {
+            for (String filename: filenamesList
+                 ) {
+                Path file = Paths.get(conceptuelCardFolder).resolve(filename);
+                Resource resource = new UrlResource(file.toUri());
+                if(resource.exists() || resource.isReadable()) {
+                    fileslist.add(resource) ;
+                }else {
+                    throw new RuntimeException("Could not read the file!");
+                }
+            }
+
+        } catch (MalformedURLException e) {
+            throw new RuntimeException("Error: " + e.getMessage());
+        }
+        return fileslist;
+    }
+
     @Override
     public Resource loadCoursePR(String filename) {
         try {

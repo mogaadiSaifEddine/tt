@@ -1,12 +1,12 @@
 package com.example.backendproject.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import javax.persistence.Lob;
+
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -25,6 +25,13 @@ public class Block {
     private Boolean isOptinal;
     @OneToOne
     private User_answer user_answer;
+//    private String customerAttributeJSON;
+    @Lob
+    private String blockParams;
+
+    @OneToMany(mappedBy = "block" ,  fetch = FetchType.EAGER,   orphanRemoval=true)
+    private List<BlockFile> blockFileList;
+
 //
 //    @OneToMany(mappedBy="block")
 //    private List<Exercice_Block> exercice_blockList;
