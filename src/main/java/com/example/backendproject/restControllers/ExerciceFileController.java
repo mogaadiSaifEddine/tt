@@ -1,10 +1,7 @@
 package com.example.backendproject.restControllers;
 
-import com.example.backendproject.entities.Course;
 import com.example.backendproject.entities.ExerciceFile;
-import com.example.backendproject.repos.CourserRepo;
 import com.example.backendproject.repos.ExerciceFileRepo;
-import com.example.backendproject.service.CourseService;
 import com.example.backendproject.service.ExerciceFileService;
 import com.example.backendproject.service.files.FileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
