@@ -1,14 +1,21 @@
 package com.example.backendproject;
 
 import com.example.backendproject.service.UserServiceImpl;
+import io.jsonwebtoken.lang.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import org.springframework.security.config.annotation.web.socket.AbstractSecurityWebSocketMessageBrokerConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import com.example.backendproject.service.files.FileStorageService;
 
@@ -52,5 +59,10 @@ public class BackendprojectApplication {
 
     public void run(String... arg) throws Exception {
         fileStorageService.init();
+
     }
+
+
+
+
 }

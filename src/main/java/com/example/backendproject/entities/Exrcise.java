@@ -22,33 +22,31 @@ public class Exrcise {
 
     @Column(name = "name" , columnDefinition = "TEXT" )
     private String name;
-    @Column(name = "difficulty" , columnDefinition = "TEXT" ,nullable = false)
 
+    @Column(name = "difficulty" , columnDefinition = "TEXT" ,nullable = false)
     private Diffuculty difficulty;
+
     @Column(name = "type" , columnDefinition = "TEXT" ,nullable = false)
     private ExerciceType type;
 
     private Long exerciceorder;
+
     private String question ;
 
+    @Column(columnDefinition = "boolean default false")
+    private boolean isValid ;
+
     private boolean isRTL ;
-//    @ManyToOne
-//    private User user;
 
-
-
+    private String advisorComment ;
 
     @JsonIgnoreProperties("exercice")
     @OneToMany(mappedBy="exercice"  , cascade = CascadeType.REMOVE)
     List<Exercice_Block> blocks;
 
-
-
-
     @OneToMany(mappedBy="exercice",orphanRemoval=true)
     @JsonIgnore
     private List<User_answer> user_answers;
-
 
     @ManyToOne
     @JoinColumn(name = "exerciceSerie")

@@ -22,6 +22,12 @@ public class Chapter {
 
     private Trimestre trimestre;
 
+
+
+
+    @Column(columnDefinition = "boolean default true")
+     private  Boolean isValid ;
+
     @JsonIgnore
     @ManyToOne
     private User teacher ;
@@ -35,6 +41,11 @@ public class Chapter {
     @OneToOne()
     @JoinColumn(name = "course")
     private    Course course;
+
+
+    @OneToOne()
+    @JoinColumn(name = "coursePR")
+    private    CoursePR coursePR;
 
 
 
