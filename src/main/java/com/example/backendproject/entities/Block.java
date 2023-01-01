@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.persistence.Lob;
 
 import java.util.List;
-import java.util.Map;
 
 @Getter
 @Setter

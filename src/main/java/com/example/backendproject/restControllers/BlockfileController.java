@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/exercice/file")
+@RequestMapping("/block_exercice/file")
 
 public class BlockfileController {
     @Autowired
@@ -29,8 +29,8 @@ public class BlockfileController {
     FileStorageService fileStorageService;
 
     @PostMapping("/{idBlock}")
-    public Boolean AddCourse(@PathVariable("idFileblock") Long idFileblock, @RequestParam("file") List< MultipartFile> file) {
-        return courseService.AddCourse(file, idFileblock);
+    public Boolean AddCourse(@PathVariable("idBlock") Long idBlock, @RequestParam("file") List< MultipartFile> file) {
+        return courseService.AddCourse(file, idBlock);
     }
 
     @GetMapping("/{idFileblock}")

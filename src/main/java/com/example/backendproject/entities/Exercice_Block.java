@@ -33,10 +33,12 @@ public class Exercice_Block {
 
     @Lob
     private String blockParams;
+
+    @Column(columnDefinition ="integer default 16"  )
     private BlockType exerciceBlockType;
-    @Column(name = "tags", columnDefinition = "jsonb")
-    @JsonProperty("tags")
-    private Map<String,Object> tags = new HashMap<>();
+//    @Column(name = "tags", columnDefinition = "jsonb")
+//    @JsonProperty("tags")
+//    private Map<String,Object> tags = new HashMap<>();
     @ManyToOne
     @JoinColumn(name="exercice")
 //    @Cascade(org.hibernate.annotations.CascadeType.ALL)
