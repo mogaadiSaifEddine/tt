@@ -40,6 +40,7 @@ public class BlockFileService {
         Exercice_Block chapter = er.findById(idExercice).orElse(null);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd-HHmmss");
         Date date = new Date(System.currentTimeMillis());
+        System.out.println(multipartFiles.size());
         try {
             for (MultipartFile file : multipartFiles
             ) {

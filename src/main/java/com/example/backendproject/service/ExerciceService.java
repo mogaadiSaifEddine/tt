@@ -25,6 +25,7 @@ public class ExerciceService {
 
     public Exrcise AddExercice(Exrcise e) {
         Chapter chapter = e.getExerciceSerie().getChapter();
+        System.out.println(e.getBlocks().get(0).toString());
         chapter.setIsValid(false);
         chapterRepo.save(chapter);
         exrciceRepository.save(e);
