@@ -3,10 +3,7 @@ package com.example.backendproject.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -19,6 +16,7 @@ import java.util.Map;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class Exercice_Block {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +29,8 @@ public class Exercice_Block {
     private Boolean isAdmissable;
     private int blockOrder;
 
-    @Lob
+    @Column(name = "blockParams" , columnDefinition = "TEXT" )
     private String blockParams;
-
     @Column(columnDefinition ="integer default 16"  )
     private BlockType exerciceBlockType;
 //    @Column(name = "tags", columnDefinition = "jsonb")
