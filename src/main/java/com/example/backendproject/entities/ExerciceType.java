@@ -25,7 +25,8 @@ public enum ExerciceType {
     ARITHMETIC_TREE,
     FILL_BLANKS_IMG,
     COLOR_SHAPE,
-    TEXT_UNDER_IMAGE
+    TEXT_UNDER_IMAGE,
+    VERTICAL_EQUATION
 ,
 
 }
