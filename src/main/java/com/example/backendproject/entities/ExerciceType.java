@@ -24,7 +24,8 @@ public enum ExerciceType {
     LISTEN,
     ARITHMETIC_TREE,
     FILL_BLANKS_IMG,
-    COLOR_SHAPE
+    COLOR_SHAPE ,
+    FILL_LETTERS
 ,
 
 }

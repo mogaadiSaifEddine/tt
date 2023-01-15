@@ -106,6 +106,7 @@ public class FileStorageServiceImpl  implements FileStorageService    {
     @Override
     public void  addBlockFiles(MultipartFile file , String url) {
         try {
+            System.out.println(url);
 
                 Files.copy(file.getInputStream(), Paths.get(BlockFilesFolder).resolve(url));
         } catch (Exception e) {
