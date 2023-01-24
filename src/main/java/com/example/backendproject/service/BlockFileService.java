@@ -9,9 +9,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.net.URLConnection;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class BlockFileService {
@@ -44,8 +46,9 @@ public class BlockFileService {
         try {
             for (MultipartFile file : multipartFiles
             ) {
+                String fileName = Objects.requireNonNull(file.getOriginalFilename()).substring(0 , file.getOriginalFilename().length()-1);
                 System.out.println(file);
-                String url = formatter.format(date) + file.getOriginalFilename();
+                String url = formatter.format(date) + fileName;
                 fileStorageService.addBlockFiles(file, url);
                 if (chapter != null)
                     if (file.isEmpty()) {
@@ -54,10 +57,15 @@ public class BlockFileService {
                         byte[] bytes = file.getBytes();
                         System.out.println("File successfully uploaded to local storage : " + file.getOriginalFilename());
                     }
+                System.out.println(file.getContentType());
+                System.out.println(file.getName());
+                String mimeType = URLConnection.guessContentTypeFromName(file.getOriginalFilename());
                 BlockFile f = new BlockFile();
-                f.setName(file.getOriginalFilename());
+                System.out.println(mimeType);
+                f.setName(file.getName());
                 f.setUrl(url);
                 f.setBlock(chapter);
+                f.setType(file.getContentType());
                 System.out.println(f.getUrl());
                 BlockFile cp = fr.save(f);
             }

@@ -1,6 +1,7 @@
 		package com.example.backendproject.SecurityConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -10,8 +11,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.header.writers.StaticHeadersWriter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@EnableWebSecurity
+		@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
@@ -36,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		http.authorizeRequests().antMatchers("/login","/addrole","/addroleauser/{username}/{rolename}","/add","/group/","/forgetpassword/{email}","/resetpassword/{email}/{newpass}/{cofirm}","/activecompte/{username}","/all"
 				,"/activecompte/{username}","/user/*","/niveau/{idNiveau}","/niveau/{idNiveau}","/niveau","/niveau","/niveau","/trimestre","/trimestre/{idTrimestre}","/sousChamp/{id_champ}","/sousChamp","/sousChamp/{idSousChamp}","/sousChamps/{idChamp}","/exercice/{idExercice}","/exercice","/exercice/{idExercice}"
-				,"/difficulte","/difficulte/{idDifficulte}","/chapitre","/chapitre/{idChapitre}","/champ","/champ/{idChamp}","/exercice/{idExercice}","/exercice","/exercice"  , "/chat/*" , "/websocket/**"  ,"/info/*").permitAll();
+				,"/difficulte","/difficulte/{idDifficulte}","/chapitre","/chapitre/{idChapitre}","/champ","/champ/{idChamp}","/exercice/{idExercice}","/exercice","/exercice"  , "/chat/*" , "/websocket/**"  ,"/info/*","/filgetter/**").permitAll();
 		//	http.authorizeRequests().antMatchers("/all").hasAuthority("ADMIN");
 		http.authorizeRequests().anyRequest().authenticated();
 		http.addFilter(new JWTAuthenticationFilter (authenticationManager())) ;
@@ -48,3 +52,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 }
+
