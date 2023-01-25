@@ -22,13 +22,15 @@ public class Block {
     private String type;
     @Column(name = "isOptinal"  ,nullable = false)
     private Boolean isOptinal;
-    @OneToOne
-    private User_answer user_answer;
+
 //    private String customerAttributeJSON;
     @Lob
     private String blockParams;
 
-    @OneToMany(mappedBy = "block" ,  fetch = FetchType.EAGER,   orphanRemoval=true)
+    @OneToOne
+    private User_answer user_answer;
+
+    @OneToMany(mappedBy = "block" ,  fetch = FetchType.EAGER,   orphanRemoval=true , cascade = CascadeType.REMOVE)
     private List<BlockFile> blockFileList;
 
 //

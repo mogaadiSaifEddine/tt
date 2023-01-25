@@ -68,7 +68,7 @@ public class ExerciceService {
             }
         }
 
-        return exrciceRepository.save(existingExercise);
+        return exrciceRepository.save(updatedExercise);
     }
 
     private static void checkChapterValid(Chapter chapter) {
