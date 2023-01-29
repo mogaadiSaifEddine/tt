@@ -21,9 +21,17 @@ public class Exercice_Block {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Exercice_Block_Id;
+    @Column(name = "label" , columnDefinition = "TEXT" )
     private String label;
+
+
+    @Column(name = "placeholder" , columnDefinition = "TEXT" )
     private String placeholder;
+
+    @Column(name = "value" , columnDefinition = "TEXT" )
     private String value;
+
+    @Column(name = "correctValue" , columnDefinition = "TEXT" )
     private String correctValue ;
 
     private Boolean isAdmissable;

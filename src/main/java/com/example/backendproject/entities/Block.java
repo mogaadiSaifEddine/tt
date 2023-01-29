@@ -18,7 +18,7 @@ public class Block {
     private Long block_id;
     @Column(name = "name" , columnDefinition = "TEXT" ,nullable = false)
     private String name;
-    @Column(name = "type" , columnDefinition = "TEXT" ,nullable = false)
+    @Column(name = "type" , columnDefinition = "TEXT" )
     private String type;
     @Column(name = "isOptinal"  ,nullable = false)
     private Boolean isOptinal;
