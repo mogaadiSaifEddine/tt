@@ -29,9 +29,9 @@ public class Block {
 
     @OneToOne
     private User_answer user_answer;
-
-    @OneToMany(mappedBy = "block" ,  fetch = FetchType.EAGER,   orphanRemoval=true , cascade = CascadeType.REMOVE)
-    private List<BlockFile> blockFileList;
+//
+//    @OneToMany(mappedBy = "block" ,  fetch = FetchType.EAGER,   orphanRemoval=true , cascade = CascadeType.REMOVE)
+//    private List<BlockFile> blockFileList;
 
 //
 //    @OneToMany(mappedBy="block")
