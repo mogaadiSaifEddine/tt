@@ -21,5 +21,6 @@ public enum BlockType {
     IMAGE_WITH_TEXT,
     EQUATION,
     TABLE,
-    ANSWER_TO_STROKE
+    ANSWER_TO_STROKE,
+    TEXT_TO_SEPARATE
 }

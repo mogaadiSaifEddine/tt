@@ -29,6 +29,7 @@ public enum ExerciceType {
     VERTICAL_EQUATION,
     GENERAL_TABLES,
     STROKE_WRONG_ANSWER,
-    FILL_LETTERS
+    FILL_LETTERS,
+    SEPARATE_TEXT
 
 }
