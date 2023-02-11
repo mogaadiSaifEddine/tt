@@ -77,7 +77,7 @@ public class CoursePRService {
 
             System.out.println(f.getUrl());
             CoursePR cp = fr.save(f);
-            chapter.setCoursePR(cp);
+//            chapter.setCoursePR(cp);
             er.save(chapter);
             return cp;
         }catch (Exception e){

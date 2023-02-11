@@ -36,7 +36,8 @@ public class ChapterController {
     // add a chapter by grp
     @PostMapping("/{grpId}/{userId}/{chapId}")
     public Chapter AddChapter(@RequestBody Chapter chapter , @PathVariable Long  grpId , @PathVariable Long userId ,@PathVariable Long chapId) {
-        System.out.println(chapter);
+        System.out.println(chapter.getCatre_conceptuelle());
+        System.out.println(chapter.getCoursePR());
         User teacher  = userRepository.findById(userId).orElse(null) ;
         Group grp = groupRepops.findById(grpId).orElse(null)  ;
         System.out.println(grp);
@@ -66,6 +67,8 @@ public class ChapterController {
         chapter1.setName(chapter.getName());
         chapter1.setUrl(chapter.getUrl());
     chapter1.setIsValid(chapter.getIsValid());
+        chapter1.setCatre_conceptuelle(chapter.getCatre_conceptuelle());
+        chapter1.setCoursePRstring(chapter.getCoursePRstring());
         return chapterRepo.save(chapter1 );
     }
     @DeleteMapping("/{id}")
