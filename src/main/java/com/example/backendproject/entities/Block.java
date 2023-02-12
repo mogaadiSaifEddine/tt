@@ -18,7 +18,7 @@ public class Block {
     private Long block_id;
     @Column(name = "name" , columnDefinition = "TEXT" ,nullable = false)
     private String name;
-    @Column(name = "type" , columnDefinition = "TEXT" ,nullable = false)
+    @Column(name = "type" , columnDefinition = "TEXT" )
     private String type;
     @Column(name = "isOptinal"  ,nullable = false)
     private Boolean isOptinal;
@@ -29,9 +29,9 @@ public class Block {
 
     @OneToOne
     private User_answer user_answer;
-
-    @OneToMany(mappedBy = "block" ,  fetch = FetchType.EAGER,   orphanRemoval=true , cascade = CascadeType.REMOVE)
-    private List<BlockFile> blockFileList;
+//
+//    @OneToMany(mappedBy = "block" ,  fetch = FetchType.EAGER,   orphanRemoval=true , cascade = CascadeType.REMOVE)
+//    private List<BlockFile> blockFileList;
 
 //
 //    @OneToMany(mappedBy="block")
